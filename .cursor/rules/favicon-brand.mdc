@@ -1,0 +1,37 @@
+---
+description: MUST — brand favicon/app icons; never ship Next.js default favicon
+alwaysApply: true
+---
+
+# Favicon & app icons (must)
+
+Every landing project must use the **brand logo** as favicon. Never leave the Create Next App / Next.js default icon.
+
+## Required files
+
+| File | Size guide | Role |
+|------|------------|------|
+| `src/app/icon.png` | ~512×512 | App Router favicon (auto) |
+| `src/app/apple-icon.png` | ~180×180 | Apple touch |
+| `public/favicon.png` | 32×32 | Explicit `/favicon.png` |
+| `public/apple-icon.png` | ~180×180 | Metadata / fallback |
+
+## Build steps
+
+1. Source: brand logo from `public/<pack>/logos/` (navbar mark)
+2. Resize with `sharp` (or similar): square canvas, **transparent** pad (not cream plate)
+3. Prefer transparent PNG so browser tabs do not show a cream/grey box behind the mark
+4. Delete any default `src/app/favicon.ico` from the Next starter
+5. Point `icons` in metadata (`@/lib/seo` / `layout`) at `/favicon.png` + apple icon
+6. Keep file sizes tiny (favicon ≤ ~5KB; icon ≤ ~100KB)
+
+## Never
+
+- Ship the black/white Next.js triangle favicon
+- Use the full-resolution navbar PNG (1MB+) as favicon
+- Hotlink a remote favicon
+- Bake a solid cream/grey rectangle behind the mark (shows as a box in Chrome tabs)
+
+## Any landing
+
+Swap logo source via `naturavive-brand.mdc` / `@/config/brand`. Same paths and rule.

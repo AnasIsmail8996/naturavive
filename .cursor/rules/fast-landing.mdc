@@ -1,0 +1,32 @@
+---
+description: MUST — fast landing pages via /think; quality not skipped; reuse prompt in AGENTS.md
+alwaysApply: true
+---
+
+# Fast landing pages (must)
+
+Triggers: `/think`, “fast landing”, “jaldi landing”, new route from screenshots/Figma.
+
+## Do this order
+
+1. Read `.cursor/skills/think/SKILL.md`
+2. Run **`landing-bootstrap.mdc`** (config, shell, favicon, SEO stubs)
+3. Fill / confirm `project.mdc` + `naturavive-brand.mdc` (ask once if empty)
+4. Skim **`landing-known-issues.mdc`** + **`header-nav.mdc`** + **`hydration-safe.mdc`**
+5. Assets → `@/config/brand`; copy → `src/data/<page>.ts`
+6. Thin `page.tsx`; **one section at a time**; gate with `section-build-gate.mdc`
+7. Cutout scenes → `layered-scene.mdc`
+8. Do not clone another landing’s layout (`per-landing-ui.mdc`)
+9. Ship only when: responsive + **404** + **scroll chrome** + **favicon (transparent)** + **SEO** + **fast loading** + `npm run build`
+
+## Reuse prompt
+
+Copy the **Next time: copy-paste prompt** block from `AGENTS.md`.
+
+## Related
+
+- Bootstrap: `landing-bootstrap.mdc`
+- Known bugs: `landing-known-issues.mdc`
+- Hydration / Image console: `hydration-safe.mdc`
+- Assets: `assets-workflow.mdc`
+- Verify: `/exper`

@@ -1,0 +1,47 @@
+---
+description: Expert A–Z delivery from section screenshots or Figma
+alwaysApply: true
+---
+
+# Design → code (expert)
+
+Screenshot / Figma / section image = **source of truth**. Ship production-ready, not approximate.
+
+## Per landing page
+
+- Each landing may have a different UI — do not reuse Home structure unless the design matches
+- Identify **which landing / route** before coding
+- See `per-landing-ui.mdc`
+
+## Intake (before coding)
+
+1. Name the **landing + section**
+2. Map files: `src/app/<route>/`, `src/components/...`, copy in `src/data/`, tokens `@/config/brand|site`
+3. Extract: layout, spacing, typography, colors, media, hover/motion, mobile vs desktop
+4. Figma URL → Figma MCP / design-to-code skill; prefer tokens over hardcoded hex
+5. Image only → read the image; note seams, borders, overlays, card edges
+
+## Build order (A → Z)
+
+1. **Folders** — thin `app/` page; section components; data/config
+2. **Tokens** in `globals.css` / `brand.ts` (sample logo/bg pixels if matching baked assets)
+3. **Data/copy** in `data/*` / `site.ts` (no em/en dashes)
+4. **Component-based**; `"use client"` only for nav, motion, Swiper, forms, measured UI
+5. **Primitives** reuse `ui/*`
+6. **Section UI** mobile-first; layered bg = base color/gradient + image layer + content `z-10`
+7. **Responsive** 320 → 1440+; `min-w-0`, `overflow-x-clip`
+8. **Interaction** icons, hover, `cursor-pointer`; full-card hover borders when designed
+9. **QA** visual seam check; `npm run build` before claiming done
+
+## Multi-section / multi-image
+
+- One section at a time in page order
+- Label each image in the reply: which section it drove
+- Prefer live site or Figma when screenshot is ambiguous
+
+## Never
+
+- Guess brand hex when a logo/bg asset exists: **sample pixels** or use CSS vars
+- Opaque photo backgrounds over brand colours without correct blend
+- Decorative top borders that add unintended seams unless designed
+- Hardcode paths/colors outside `@/config/*` and CSS vars

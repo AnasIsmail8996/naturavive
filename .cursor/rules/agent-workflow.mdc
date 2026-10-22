@@ -1,0 +1,42 @@
+---
+description: Expert UI delivery loop — prompt parse, implement, verify, report
+globs: src/components/**/*.{ts,tsx},src/app/**/*.{ts,tsx},src/data/**/*.ts,components/**/*.{ts,tsx},app/**/*.{ts,tsx}
+alwaysApply: true
+---
+
+# Expert workflow
+
+## Parse the user prompt
+
+Expect: **which landing** + **where** (section/file) + **what** + **how** + optional **screenshot/Figma**.
+UI can differ per landing. Never force Home layout onto another route.
+Rewrite vague asks into concrete tasks before coding.
+Confirm assets from `brand.ts` / `site.ts`, not hardcoded paths.
+Before coding a section: skim `landing-known-issues.mdc` + `assets-workflow.mdc` so prior FORJD rework bugs are not repeated.
+Lock columns/gaps first (`section-build-gate.mdc`); polish second.
+
+## Deliver
+
+0. **Branch:** work on `dev` only; after verify merge + push `main`, then sync `dev` (`git-branch-workflow.mdc`)
+1. Components in `src/components/*`; copy in `src/data/`; keep `page.tsx` thin
+2. Mobile-first; Motion stagger subtle; reuse primitives
+3. SEO in `@/lib/seo` when positioning/copy changes
+4. Fix visual bugs in the same pass (seams, overflow, wrong layer)
+
+## Verify (definition of done)
+
+- [ ] Correct folder structure (thin page, section components)
+- [ ] Component-based (no markup dump in `page.tsx`)
+- [ ] Matches screenshot/Figma section intent
+- [ ] Mobile-first; 320 → 1280+ no horizontal scroll
+- [ ] Local media / brand paths valid
+- [ ] Icons + hover + badges + `cursor-pointer`; Motion used appropriately
+- [ ] No new unapproved packages
+- [ ] Themed **404** when shipping a full landing (`not-found.tsx` + `error.ts`)
+- [ ] Scroll chrome when shipping a full landing (scrollbar + `ScrollToTop` + sticky nav)
+- [ ] Brand favicon + SEO (metadata/JSON-LD/robots/sitemap) + fast-loading patterns
+- [ ] `npm run build` green when claiming done
+
+## Report
+
+Short: what changed, files touched, pass/fail. Ask only if blocked (missing asset, conflicting designs).

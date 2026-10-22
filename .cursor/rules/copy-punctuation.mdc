@@ -1,0 +1,10 @@
+---
+description: Never use em or en dashes in site copy
+alwaysApply: true
+---
+
+# Copy punctuation
+
+Never use the em dash (`—`) or en dash (`–`) in UI copy, data strings, metadata, or agent-written content.
+
+Prefer commas, periods, colons, or a spaced hyphen (` - `).

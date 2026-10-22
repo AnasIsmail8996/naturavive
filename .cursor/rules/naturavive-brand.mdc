@@ -1,0 +1,22 @@
+---
+description: NaturaVive brand, assets, and favicon
+alwaysApply: true
+---
+
+# Brand & assets
+
+- Product: **NaturaVive**
+- Contact / domain: fill `@/config/site` (phone, email, social, live URL)
+- Asset pack root: `public/assets/naturavive/`
+- Logos: `public/assets/naturavive/brand/`
+- Hero scenes: `hero/hero-scene-*.jpg` + `hero/hero-product-cluster-clear.png`
+- Products (clear): `products/*-clear.png` (black studio bg → use `.nv-knockout-black`)
+- Section frame bg: `backgrounds/section-frame-botanical.jpg`
+- Subscribe: `subscribe/wellness-lifestyle-woman-clear.jpg`
+- Icons: `public/assets/naturavive/icons/`
+- Trust: `public/assets/naturavive/trust/`
+- App icons: `src/app/icon.png`, `src/app/apple-icon.png`, `public/favicon.png`
+- Paths in code: only via `@/config/brand` (`brandAssets`, `brandTokens`)
+- Colours: primary `#1B4332` · leaf `#3D6B4F` · accent `#B88916` · ink `#1A1A1A`
+- Copy: no em/en dashes; use commas, periods, or ` - `
+- Social / UI icons: pack SVGs via `BrandIcon` + `.nv-icon-ink` / `.nv-icon-leaf`

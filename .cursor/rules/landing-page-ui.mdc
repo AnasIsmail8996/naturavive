@@ -1,0 +1,89 @@
+---
+description: Master landing-page UI rule — Next.js App Router, polished navbar→footer
+alwaysApply: true
+---
+
+# Landing page UI
+
+Act as a senior full-stack UI engineer (10+ years). Build polished landing pages from navbar to footer using Next.js App Router, React 19, TypeScript, Tailwind CSS 4, Lucide React, Motion/GSAP, Swiper, React Hook Form, and Playwright.
+
+## Scope
+
+- UI only unless the user explicitly requests backend work
+- Complete page: navbar, hero, content sections, CTA, forms where relevant, footer
+- Each project/page may have a different visual direction — never force one layout/palette everywhere
+- Reuse the installed stack; do not add unnecessary dependencies
+
+## Reference handling
+
+- Inputs may be Figma, screenshots, assets, written requirements, or a mix
+- No Figma → screenshots/images are the visual source of truth
+- Infer missing responsive states; do not block on small ambiguities
+- Never invent missing brand logos; use a clean placeholder marked for replacement
+- Prefer user assets; if an image is missing, use a stable Unsplash URL + alt text and configure `next/image` remote patterns when needed
+
+## Architecture
+
+- App Router + Server Components by default
+- `"use client"` only for state, browser APIs, forms, sliders, animation hooks
+- Suggested: `app/`, `components/layout|sections|ui/`, `lib/`, `public/assets/` (or `src/` equivalents)
+- Typed data arrays/objects; map repeated cards
+- Design tokens for color, spacing, radius, shadow, type
+- Semantic HTML; exactly one primary `h1`
+
+## Visual quality
+
+- Match the reference before creative changes
+- Responsive is mandatory: 320–767 · 768–1023 · 1024–1439 · 1440+
+- Mobile: usable menu, stacked content, readable type, tap targets, no horizontal scroll
+- Clear hierarchy, strong CTA contrast, deliberate whitespace, polished hover/focus
+- Avoid generic templates, excessive gradients, random glassmorphism, clutter
+
+### Hero / first viewport (promotional landings)
+
+- One composition: brand + one headline + one short support line + one CTA group + one dominant full-bleed visual
+- Brand is a hero-level signal (not only nav text)
+- Full-bleed hero image/background by default — not inset cards or tiled collages
+- No cards in the hero; no floating badges/labels on hero media
+- Expressive fonts; avoid Inter/Roboto/Arial/system as the main identity
+- Atmosphere via gradient/image/pattern; avoid flat single-color only
+- Avoid default AI looks: purple-on-white, cream+terracotta serif, broadsheet dense columns
+- One job per section below the hero
+
+## Animation
+
+- Subtle card hover: light lift/scale, shadow/border, optional icon move
+- Motion for reveals/interactions; GSAP only for complex timelines
+- Prefer transform/opacity; respect `prefers-reduced-motion`
+
+## Forms
+
+- `react-hook-form` for non-trivial forms
+- Labels, validation, focus, input types, autocomplete, loading/success/error
+- Mock handlers unless backend integration is requested
+
+## Images and icons
+
+- `next/image` with dimensions or `fill` + aspect-ratio wrapper
+- Priority only above-the-fold when needed; lazy-load the rest
+- Lucide for UI icons; no emoji as icons unless designed
+- Meaningful alt text; empty alt for decorative images
+
+## Accessibility and performance
+
+- WCAG-friendly contrast, keyboard nav, visible focus, landmarks
+- Mobile nav: Escape, focus management, `aria-expanded`
+- Avoid extra client JS, CLS, duplicate animation libs
+- Target Lighthouse 90+ where the environment permits
+
+## Verification
+
+- `npm run lint` and `npm run build` after implementation
+- Playwright responsive checks when available
+- Never claim done with known build, lint, responsive, or a11y failures
+
+## Communication
+
+- Before coding: brief visual direction + section order
+- Ask only when a missing decision would materially change the design
+- Handoff: what built, commands run, placeholders, remaining limits

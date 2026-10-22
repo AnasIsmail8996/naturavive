@@ -1,0 +1,36 @@
+---
+description: Nested glass/cream panels, metrics strips, and full-bleed sibling bands (Testimonials/Journal pattern)
+alwaysApply: true
+---
+
+# Nested panels & strips
+
+Recurring bug: opaque parent cards and traps that hide mountain backgrounds.
+
+## Parent shells
+
+- Prefer soft cream wash / frosted glass (`bg-white/10`–`bg-white/20`, blur) over solid white
+- Full section photo must remain readable behind mist
+- Reject: solid cream wall on half the section that clips the landscape
+
+## Sibling full-bleed strips
+
+When design shows a band **below** a card cluster (e.g. Trusted Worldwide):
+
+```
+section
+  └─ intro + cards (optional glass parent)
+  └─ strip  ← sibling, full-bleed, NOT inside the glass parent
+```
+
+Do not nest that strip inside the frosted parent.
+
+## Metrics / topic bars
+
+- Prefer **vertical borders only** between cells
+- Last cell may be transparent for script quote + vertical words (no bg image, no fill)
+- Keep bar close under cards (`mt-6` / `mt-7`)
+
+## Journal / promo banners
+
+Glass banner with mountain `bg-image` is allowed when the screenshot shows it. Match that; do not flatten to solid cream.

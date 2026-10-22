@@ -1,0 +1,55 @@
+---
+description: Day-0 bootstrap for any new landing - do this before section polish
+alwaysApply: true
+---
+
+# Landing bootstrap (first hour)
+
+Use on **every new brand / route** before deep section UI. Saves rework.
+
+## 0. Fill once
+
+- [ ] `.cursor/rules/project.mdc` + `naturavive-brand.mdc` (name, domain, colours, asset root)
+- [ ] `src/config/site.ts` + `src/config/brand.ts` paths
+- [ ] `src/data/<page>.ts` copy (no em/en dashes)
+
+## 1. Next config (must)
+
+In `next.config.ts`:
+
+```ts
+images: {
+  formats: ["image/avif", "image/webp"],
+  qualities: [60, 65, 75], // include every quality={N} used in Image
+  // deviceSizes / imageSizes as needed
+}
+poweredByHeader: false
+compress: true
+experimental: { optimizePackageImports: ["lucide-react", "motion", "swiper"] }
+```
+
+Restart `npm run dev` after config changes.
+
+## 2. Shell files (must)
+
+| Piece | Rule |
+|-------|------|
+| Thin `page.tsx` | Compose only |
+| Header | `header-nav.mdc` |
+| Footer | `footer-anatomy.mdc` if CTA band exists |
+| 404 | `error-page.mdc` |
+| Scroll chrome | `scroll-chrome.mdc` (`scrollY > ~64`) |
+| Favicon | `favicon-brand.mdc` (**transparent** pad) |
+| SEO | `seo.mdc` |
+| Fast load | `fast-loading.mdc` (dynamic below-fold) |
+
+## 3. Build loop
+
+1. Skim `landing-known-issues.mdc`
+2. `/think` section-by-section
+3. Gate each section: `section-build-gate.mdc`
+4. `/exper` when claiming whole landing done
+
+## Speed prompts
+
+See **Next time: copy-paste prompt** in `AGENTS.md`.

@@ -1,0 +1,36 @@
+---
+description: Visual fidelity — color match, layered media, borders, asset QA
+globs: src/components/**/*.{ts,tsx},src/app/globals.css,src/config/brand.ts,app/globals.css,components/**/*.{ts,tsx}
+alwaysApply: true
+---
+
+# Visual fidelity
+
+## Color match (logo / baked PNG)
+
+- Logo with solid bg that must blend: sample dominant corner pixels → CSS var
+- Prefer **transparent logo** over fighting a baked rectangle
+- Brand-critical marks: `unoptimized` on `next/image` when exact match matters
+
+## Layered backgrounds
+
+```
+relative isolate section
+  ::before or div → solid / gradient (brand color)
+  ::after or div → image / pattern (transparent asset, low opacity)
+  content → relative z-10
+```
+
+- Reject broken assets (near-flat grey plates)
+- Do not use `mix-blend-mode: screen` on opaque grey plates
+
+## Card hover borders
+
+- Border wraps **image + text** (full card), slightly outside radius when designed
+- Measure with `ResizeObserver`; SVG viewBox = pixel size
+- Parents (Swiper slide, motion.li): `overflow-visible` when border draws outside
+
+## Seams & chrome
+
+- One intentional top accent max
+- Dividers: single subtle border (e.g. `border-white/20`) unless design specifies more

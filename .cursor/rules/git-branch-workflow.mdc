@@ -1,0 +1,50 @@
+---
+description: MUST — all work on dev; verify; merge+push main; sync dev
+alwaysApply: true
+---
+
+# Git branch workflow (must)
+
+**Default branch for all new work:** `dev`  
+**Production / push target after verify:** `main`
+
+## Next time (every change)
+
+1. **Build on `dev`**
+   - `git checkout dev` (create from `main` if missing: `git checkout -b dev`)
+   - Commit all feature / UI / fix work here
+   - Do **not** commit unfinished work straight to `main`
+
+2. **Verify on `dev`**
+   - `npm run build` green
+   - Spot-check critical UI (hero → footer) + mobile
+   - Only then merge
+
+3. **Merge into `main` + push `main`**
+   - `git checkout main`
+   - `git pull origin main` (if remote exists)
+   - `git merge dev` (prefer fast-forward when possible)
+   - `git push origin main`
+   - Never force-push `main` unless the user explicitly asks
+
+4. **Sync `dev` back up-to-date with `main`**
+   - `git checkout dev`
+   - `git merge main` (or `git rebase main` only if user asks)
+   - `git push origin dev` (so remote `dev` matches)
+   - Confirm: `dev` and `main` point at the same commit (or `dev` is not behind `main`)
+
+## Rules
+
+- Day-to-day coding + commits → **`dev`**
+- Release / verified ship → merge → **`main`** → push **`main`**
+- After every successful main push → bring **`dev`** current again
+- Do not leave `dev` stale behind `main`
+- Do not open PRs / pushes to `main` with unverified broken builds
+
+## Quick checklist
+
+- [ ] Working on `dev`
+- [ ] `npm run build` OK
+- [ ] Merged `dev` → `main`
+- [ ] Pushed `origin/main`
+- [ ] `dev` synced from `main` + pushed if remote exists

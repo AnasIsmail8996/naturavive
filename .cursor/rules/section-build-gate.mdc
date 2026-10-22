@@ -1,0 +1,61 @@
+---
+description: Pre-flight gate before shipping a section or claiming a landing done
+alwaysApply: true
+---
+
+# Section build gate (must)
+
+Do not say “done” or move to the next screenshot until this gate passes.
+
+## Layout lock (first 10 minutes)
+
+1. Count columns from screenshot (write them in a short comment if helpful)
+2. Set grid/`flex` structure + widths **before** typography polish
+3. Place trust/stats/orbit items in the structure pass, not as an afterthought
+
+Rework cost is highest when polish happens on a wrong grid.
+
+## Visual fidelity
+
+- [ ] Correct bg asset from SECTION-GUIDE / brand
+- [ ] Layered: color → image → content `z-10`
+- [ ] No hard cream/white wall killing the photo
+- [ ] Full-bleed strips that belong outside nested cards are **outside**
+
+## Interaction
+
+- [ ] Icons present where design shows them
+- [ ] Hover + `cursor-pointer` on interactive UI
+- [ ] Motion enter directions match L/R structure; `viewport={{ once: true }}`
+
+## Responsive
+
+Mentally (or browser) check: **320 · 390 · 768 · 1024 · 1280+**
+- No horizontal scroll (`min-w-0`, `overflow-x-clip`)
+- CTAs `w-full` on phone when designed
+- Decorative vertical text hidden below `xl:` if it overflows
+
+## Data / config
+
+- [ ] Copy in `src/data/*` (no em/en dashes)
+- [ ] Paths/colors in `src/config/brand|site`
+- [ ] Thin `page.tsx` only composes sections
+
+## Ship check
+
+- [ ] `npm run build` green when claiming page/section complete
+- [ ] If user sent a “fix” image: treat it as new source of truth; update structure first, not only CSS tweaks
+
+## Landing complete (extra must)
+
+When claiming a **whole landing / site** done (not just one section):
+
+- [ ] Themed **404** exists: `src/app/not-found.tsx` + `src/data/error.ts` (`error-page.mdc`)
+- [ ] No blank Next.js default error UI
+- [ ] **Scroll chrome:** theme scrollbar + `ScrollToTop` + fixed nav with active bg after `scrollY > ~64` (`scroll-chrome.mdc`)
+- [ ] Responsive chrome at 320 → 1280+ (no overflow)
+- [ ] **Favicon:** brand logo icons, **transparent** pad (`favicon-brand.mdc`)
+- [ ] **SEO:** metadata + JSON-LD + robots + sitemap (`seo.mdc`)
+- [ ] **Fast loading:** hero LCP, font swap, dynamic below-fold, `images.qualities` (`fast-loading.mdc`)
+- [ ] Hydration-safe client UI (`hydration-safe.mdc`)
+- [ ] Bootstrap checklist done (`landing-bootstrap.mdc`)

@@ -1,0 +1,118 @@
+---
+description: Codebase folder tree, component base, and where every file type belongs
+alwaysApply: true
+---
+
+# Project structure (must)
+
+Next.js App Router landing pack. Keep this tree. Do not invent parallel folders.
+
+## Repo tree
+
+```text
+src/
+  app/                    # Routes only (thin)
+    layout.tsx            # Root shell, fonts, metadata, JsonLd
+    page.tsx              # Home: compose sections only
+    not-found.tsx         # Branded 404
+    robots.ts
+    sitemap.ts
+    icon.png / apple-icon.png
+  components/
+    home/                 # Home landing sections
+    <landing>/            # Other routes: one folder per landing
+    layout/               # Header, Footer
+    brand/                # Logo, BrandIcon
+    forms/                # react-hook-form
+    ui/                   # Button, ScrollToTop, primitives
+    seo/                  # JsonLd
+  config/
+    brand.ts              # Asset paths + brand tokens
+    site.ts               # URL, nav, contact, keywords
+  data/
+    home.ts               # Home copy
+    error.ts              # 404 copy
+    <landing>.ts          # Per-landing copy
+  lib/
+    seo.ts                # buildMetadata, JSON-LD helpers
+public/
+  <asset-pack>/           # Local images / SECTION-GUIDE
+  favicon.png / icon.png / apple-icon.png
+  videos/                 # Optional
+.cursor/rules/            # Agent rules (.mdc)
+```
+## Where code goes
+
+| Kind | Path | Example |
+|------|------|---------|
+| Route page | `src/app/<route>/page.tsx` | Compose only |
+| Home section | `src/components/home/<Name>.tsx` | `Hero`, `About` |
+| Other landing section | `src/components/<slug>/<Name>.tsx` | |
+| Header / Footer | `src/components/layout/` | |
+| Logo / marks | `src/components/brand/` | |
+| Forms | `src/components/forms/` | |
+| Shared UI | `src/components/ui/` | `ButtonLink`, `ScrollToTop` |
+| SEO widgets | `src/components/seo/` | `JsonLd` |
+| Copy | `src/data/*.ts` | No secrets, no em/en dashes |
+| Tokens / paths | `src/config/brand.ts`, `site.ts` | |
+| Helpers | `src/lib/` | |
+| Media | `public/<pack>/` | Via `@/config/brand` |
+
+Imports: `@/components/...`, `@/config/...`, `@/data/...`, `@/lib/...`.
+
+## Component base (must)
+
+1. **Thin page** - `page.tsx` imports sections; no section markup dump
+2. **One section = one file** - e.g. `home/Hero.tsx` exports `Hero`
+3. **Named exports** matching file purpose
+4. **`"use client"`** only for nav, motion, Swiper, forms, measured UI, portals
+5. **Server by default** - static sections stay server components when possible
+6. **Shared before duplicate** - extract to `ui/*` / `brand/*` / `forms/*`
+7. **Copy out of JSX** - strings in `src/data/*`
+8. **Paths/colors out of JSX** - `src/config/*` + CSS vars in `globals.css`
+9. **Below-fold** - `next/dynamic` from page when needed
+10. **New landing** - `app/<slug>/page.tsx` + `components/<slug>/` + `data/<slug>.ts`
+
+### Thin page pattern
+
+```tsx
+// src/app/page.tsx - compose only
+import { Header } from "@/components/layout/Header";
+import { Hero } from "@/components/home/Hero";
+// dynamic(...) for below-fold sections
+export default function Home() {
+  return (
+    <main className="min-w-0 max-w-full overflow-x-clip">
+      <Header />
+      <Hero />
+      {/* sections... */}
+    </main>
+  );
+}
+```
+
+## Current Home map (Naturavive)
+
+| Section | File |
+|---------|------|
+| Header | `layout/Header.tsx` |
+| Hero | `home/Hero.tsx` |
+| Trust | `home/TrustBar.tsx` |
+| Benefits | `home/Benefits.tsx` |
+| Best Sellers | `home/BestSellers.tsx` |
+| Ingredients | `home/Ingredients.tsx` |
+| Testimonials | `home/Testimonials.tsx` |
+| Subscribe | `home/Subscribe.tsx` |
+| Footer | `layout/Footer.tsx` |
+| ScrollToTop | `ui/ScrollToTop.tsx` |
+
+Add sections under `home/` as the design lands. Also see `src/STRUCTURE.md`.
+
+## Never
+
+- Dump sections into `page.tsx` / `layout.tsx`
+- New top-level `src/sections` or `src/views` (use `components/<landing>/`)
+- Hardcode asset pack paths in components (use `brand.ts`)
+- Mix Footer CTA anatomy into a mid-page section (`footer-anatomy.mdc`)
+- Clone Home folders onto another landing unless design matches (`per-landing-ui.mdc`)
+

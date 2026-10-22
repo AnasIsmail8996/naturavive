@@ -1,0 +1,166 @@
+---
+description: Proven landing bugs and fixes for ANY landing page (learned from FORJD). Read before every section to avoid rework.
+alwaysApply: true
+---
+
+# Landing known issues → solutions (must)
+
+Patterns below apply to **any** landing (any brand/route). FORJD was the source of truth for these rework bugs. **Do these first** so sections do not get rebuilt 3–5 times.
+
+## 0. Before any section code
+
+| Check | Solution |
+| --- | --- |
+| Which section + route? | Name it; do not assume Home layout for other landings |
+| Asset list? | Read `public/*/SECTION-GUIDE.md` + `asset-manifest.json`; map paths into `@/config/brand` |
+| Icon tone? | Dark bg → `light`/`gold`; cream → `dark`; hover cream→gold when both exist |
+| Columns in screenshot? | Count L / Mid / R **before** writing JSX |
+
+## 1. Structure mismatch (Hero / Science / Story)
+
+**Issue:** First pass looks “close” but orbit icons, trust bar, or 3-col grid are wrong → user sends fix images.
+
+**Solution:**
+1. Sketch columns on paper (or comment block) matching screenshot
+2. Place absolute / orbit items with % or polar math, not stacked flex “near” the product
+3. Trust/stats bars: close under content (`mt-6`/`mt-7`), floating strip over photo when designed
+4. Never claim done until screenshot column count matches
+
+## 2. Wrong background / left visual (Science + Story)
+
+**Issue:** Section bg or left image “matching nahi” (wrong file, hard cream wall, opaque plate).
+
+**Solution:**
+- Layered bg only: solid/gradient base → image at low opacity → content `z-10`
+- Soft mist overlays; **no hard cream/white panel** that kills the photo on one side
+- Prefer transparent cutouts / science pack assets over Lucide guesses
+- Sample corner pixels if logo/bg must blend (`visual-fidelity.mdc`)
+
+## 3. Product cards uneven
+
+**Issue:** Taglines, badges, prices, CTAs not on one baseline; cards different heights.
+
+**Solution:**
+- Card: `h-full flex flex-col`; image `aspect-*` shared
+- Optional badge: reserved min-height placeholder
+- Price + CTA block: `mt-auto`
+- Equal padding; tight gaps (`gap-4`–`gap-6`)
+
+## 4. Story / values / plaque / stats
+
+**Issue:** Values column too wide, plaque too narrow, stats cells uneven, icons in wrong place.
+
+**Solution:**
+- Match screenshot **widths** (fr / max-w), not equal 1/3 by default
+- Stats: shared vertical borders; last cell may have **no** bg image if design is script-only
+- First/last stats cell alignment: use `justify-end` / `justify-start` as designed
+- Icons: brand SVG pack circles (52–58px), consistent
+
+## 5. Testimonials / Journal glass panels
+
+**Issue:** White parent card, Trusted Worldwide trapped inside, cream wash blocking mountain.
+
+**Solution:**
+- Parent: cream wash / glass **without** opaque white shell
+- Mountain/photo can show through banner where designed
+- “Trusted Worldwide” (or similar strip) = **sibling outside** parent card, full-bleed
+- Metrics: vertical borders only; last cell often transparent for script + vertical words
+- Journal top banner: same pattern (glass + mountain bg-image when designed)
+
+## 6. Newsletter vs Footer confusion
+
+**Issue:** Building “Stay Connected” as a page section instead of footer.
+
+**Solution:**
+- **Stay in the Loop** → `components/home/Newsletter.tsx` (`#newsletter`)
+- **Stay Connected** → **is the Footer** (`layout/Footer.tsx`): CTA band + link columns + Local Impact + legal
+- Wire: `… → Newsletter → Footer` in thin `page.tsx`
+
+## 7. Forms / icons / assets paths
+
+**Issue:** Missing form folder, wrong map extension, Lucide social icons, broken public CSS import.
+
+**Solution:**
+- Newsletter: `react-hook-form` in `components/forms/NewsletterForm.tsx`
+- Social: project `social-*` SVGs (or `SocialIcons`), not Lucide brand icons
+- Verify both `.webp` and `.png` with `Test-Path` before hardcoding
+- Do **not** `@import` from `public/` into CSS; put tokens in `globals.css` / `brand.ts`
+
+## 8. Copy + motion noise
+
+**Issue:** Em/en dashes; same enter direction everywhere; missing hover/`cursor-pointer`.
+
+**Solution:**
+- Spaced hyphen ` - ` or commas/periods only
+- Enter: left copy from left, right visual from right, lists stagger
+- Every interactive control: icon (when useful) + hover + `cursor-pointer`
+
+## 9. Header / mobile nav overflow
+
+**Issue:** Icons + Shop Now on phone; hamburger clipped; menu panel overflows or clips.
+
+**Solution:**
+- Mobile: logo + hamburger only; wrap icon groups in `hidden md:flex` / `hidden xl:block`
+- Do not rely on `hidden` alone when child has `inline-flex`
+- Mobile menu: portal to `body`, fixed full width, measure header height; no `100vw`
+- Body scroll lock + scrollbar `paddingRight` gap
+- See `header-nav.mdc`
+
+## 10. Hero CTA hover dead
+
+**Issue:** Shop Colostrum (or primary) hover not firing.
+
+**Solution:**
+- Swiper `effect="fade"` slides steal pointer events over CTAs
+- Swiper: `pointer-events-none` + active slide `pointer-events-auto`; CTA row `relative z-30`
+- Primary hover CSS under `@media (hover: hover) and (pointer: fine)` to avoid sticky gold on touch
+
+## 11. Section eyebrow / title “hidden”
+
+**Issue:** “Our Products”, “Real Stories. Real Change.”, Journal label missing or under sticky nav.
+
+**Solution:**
+- Always render design eyebrow + `flex-1` rule line when screenshot shows it
+- Split stacked headlines to match requirement lines (`Real` / `Knowledge` / gold line)
+- Section: `scroll-mt-24` + enough `pt-*` so label is not under fixed header
+- Present vs requirement images: label which is which; match requirement copy/CTA color/script underline
+
+## 12. Sticky nav too late
+
+**Issue:** Navbar stays transparent too long.
+
+**Solution:** Activate frosted/cream bg at `scrollY > ~64`, not when `#hero` fully exits (`scroll-chrome.mdc`)
+
+## 13. Favicon cream / grey box in tab
+
+**Issue:** Browser tab shows a light rectangle behind the mark.
+
+**Solution:** Rebuild icons on **transparent** square (not cream pad); strip baked black plates if needed (`favicon-brand.mdc`). Hard-refresh tab cache.
+
+## 14. Hydration + Image console spam
+
+**Issue:** TypeWriter caret mismatch; `quality` not in `images.qualities`; logo aspect warning.
+
+**Solution:** See `hydration-safe.mdc` (mounted gate, qualities array, `width: "auto"`).
+
+## 15. Wrong port / worktree vs main
+
+**Issue:** `localhost:3124` looks correct but `:3000` does not.
+
+**Solution:** Identify which worktree serves the good port; sync **those** files into main. Do not assume the first BoN winner was applied.
+
+## 16. Mobile cards too large
+
+**Issue:** Product / story / journal cards dominate the phone viewport.
+
+**Solution:** Shorter media heights on base breakpoint; `max-w-md` + center for single-column cards; Swiper `slidesPerView` ~1.2+ so next card peeks.
+
+## Done (every section)
+
+- [ ] Screenshot columns / gaps match
+- [ ] Assets from brand + SECTION-GUIDE (no invent)
+- [ ] 320 → 1280+ no horizontal scroll
+- [ ] Icons + hover + motion
+- [ ] `npm run build` if claiming done
+
+Related: `assets-workflow.mdc` · `section-build-gate.mdc` · `nested-panels.mdc` · `footer-anatomy.mdc` · `section-alignment.mdc` · `visual-fidelity.mdc` · `header-nav.mdc` · `hydration-safe.mdc` · `layered-scene.mdc` · `landing-bootstrap.mdc`

@@ -1,0 +1,43 @@
+---
+description: MUST — animations, hover, icons, badges on interactive UI
+alwaysApply: true
+---
+
+# Animations · hover · icons · badges (must)
+
+Every interactive / card UI needs **icons + hover + cursor-pointer**. Motion should feel intentional, not noisy.
+
+## Icons
+
+- UI icons: `lucide-react`
+- Social: project `@/components/ui/SocialIcons` when present (not Lucide Facebook/Instagram/Youtube)
+- Badges / pills / CTAs: include an icon when it clarifies action
+
+## Badges
+
+- Prefer reusable badge primitives in `ui/*`
+- Accents from brand CSS vars (see `naturavive-brand.mdc` / `@/config/brand`)
+- On card hover: stronger accent + light scale/shadow when designed
+
+## Hover (must)
+
+- Links, buttons, cards, social, nav: visible hover state
+- `cursor-pointer` on all interactive controls
+- Footer links / social → brand accent hover
+- Primary buttons → brand hover from shared button primitive
+- Cards → subtle lift/scale + border accent when design uses that pattern
+
+## Animations
+
+- Prefer **Motion** (`motion/react`) for section enter, card stagger, hover lift
+- Stagger ~0.1–0.15s; `viewport={{ once: true }}` for scroll enters
+- GSAP only for complex timelines; do not add both for the same effect
+- Swiper for carousels; `overflow-visible` if outer border animates
+- Respect reduced motion; never block core UX on animation
+
+## Never
+
+- Bare buttons/links with no hover
+- Missing `cursor-pointer` on clickable UI
+- Heavy/looping animations that distract
+- New icon libraries when Lucide / SocialIcons already cover it

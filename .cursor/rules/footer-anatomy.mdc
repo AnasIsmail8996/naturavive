@@ -1,0 +1,36 @@
+---
+description: Footer CTA anatomy for any landing (newsletter CTA band + columns + optional local/legal). FORJD Stay Connected is the example.
+alwaysApply: true
+---
+
+# Footer anatomy (any landing)
+
+When the design has a dark “stay connected / newsletter CTA” band above link columns, that whole block is usually the **Footer**, not a mid-page section.
+
+FORJD example name: **Stay Connected**. Other brands may label it differently. Map by structure, not by title.
+
+## Order (top → bottom)
+
+1. **CTA band** (Stay Connected / Fuel A Brighter Tomorrow) + newsletter form + perk icons + script
+2. **Main columns**: logo/tagline/social · Shop · Learn · Customer Care · Make an Impact
+3. **Local Impact** (optional): map + state directory + store CTA
+4. **Legal bar**: tagline · privacy/terms · copyright
+
+## Pairing (map by role)
+
+| Role in design | Typical component |
+| --- | --- |
+| Mid-page newsletter (“Stay in the Loop”, etc.) | `components/<landing>/Newsletter.tsx` or `home/Newsletter.tsx` |
+| Footer CTA + link columns (+ local/legal) | `layout/Footer.tsx` |
+
+Page order: `… → Newsletter → Footer`.
+
+## Assets
+
+- CTA bg: `cta-mountain-background` (or pack equivalent)
+- Footer rock / map: footer pack paths in `brand.footer`
+- Social: `social-*` light SVGs in circular hit targets
+
+## Forms
+
+Reuse shared `NewsletterForm` (react-hook-form). Do not duplicate uncontrolled inputs.

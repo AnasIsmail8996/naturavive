@@ -1,0 +1,41 @@
+---
+description: Icons, colors, hover, and directional enter motion for sections
+alwaysApply: true
+---
+
+# Icons · color · hover · enter motion
+
+When a section uses icons or layered visuals, apply this pack.
+
+## Icons
+
+- Prefer project SVG/PNG packs (`@/config/brand`, science individual assets) over guessing Lucide
+- Cream/default state → gold/hover state when both assets exist (`round-cream` → `round-gold`)
+- Keep icon circle size consistent in a list (e.g. 52–58px)
+
+## Hover (must)
+
+- `cursor-pointer` on interactive rows/cards
+- Icon: light scale (`scale-110`) + color/accent shift
+- Text next to icon may slide slightly (`x: 4–6`)
+- Cards: lift (`-translate-y-1`) + stronger shadow
+- Buttons: brand hover + arrow `translate-x`
+
+## Enter motion (left / right / top / bottom)
+
+Use Motion with `viewport={{ once: true }}`:
+
+- Left column / copy → enter from **left** (`x: -24`)
+- Right visual / odd cards → enter from **right** (`x: 24`)
+- Lists stagger **bottom-up** or alternate L/R
+- Floating badges/orbs: gentle loop `y` float; respect `prefers-reduced-motion`
+
+## Never
+
+- Static icons with no hover on interactive lists
+- Same enter direction for every element (looks flat)
+- Motion that blocks reading or causes layout jump
+
+## Done check
+
+Icons readable, hover visible, enter directions match left/right structure of the design.

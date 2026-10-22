@@ -1,0 +1,24 @@
+---
+description: Each landing page may use a different UI — never force one layout everywhere
+alwaysApply: true
+---
+
+# Per-landing-page UI
+
+**Must:** Every landing page can have a **different UI**. Do not assume one homepage layout, section set, or visual system fits all pages.
+
+## Rules
+
+1. Treat each route / landing as its **own design contract** (screenshot, Figma, or brief for **that** page)
+2. Section order, hero style, cards, footer, motion, and density **may differ** per page
+3. Reuse brand tokens (`@/config/brand`, CSS vars) and primitives (`ui/*`) when they fit; **do not** copy another page’s layout just because it exists
+4. New landing → thin `src/app/<route>/page.tsx` + `src/components/<landing>/` + `src/data/<landing>.ts`; still mobile-first
+5. Shared Header/Footer only when that page’s design includes them; variants allowed
+6. Multi-page images: label **which landing**, implement that page only
+7. Still follow structure + mobile (`structure-components-responsive.mdc`)
+
+## Never
+
+- Force Home section order onto another landing
+- “Make it consistent with home” unless the user or design asks
+- Merge unrelated landings into one component dump

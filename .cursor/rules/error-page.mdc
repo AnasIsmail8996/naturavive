@@ -1,0 +1,43 @@
+---
+description: MUST — themed 404 / not-found page on every landing project. Never ship Next default.
+alwaysApply: true
+---
+
+# Error / 404 pages (must)
+
+**Required on every landing project and every new site from this pack.** Do not ship without a branded 404.
+
+Match the site theme. Never leave the blank Next.js default.
+
+## Required files
+
+| Piece | Path |
+|-------|------|
+| 404 route | `src/app/not-found.tsx` |
+| Copy | `src/data/error.ts` |
+| Assets / tokens | `@/config/brand`, CSS vars |
+
+## Visual contract (any brand)
+
+1. Full-bleed brand landscape / mountain (local asset from pack)
+2. Soft overlay for readability (layered bg)
+3. Frosted content panel (`bg-white/85` + `backdrop-blur` + rounded)
+4. Display font for code (`404`) + brand gold/accent on headline
+5. Script font line for warmth (`--font-script`)
+6. Primary CTA → home (`/`), icon + hover + `cursor-pointer`
+7. Optional mini header with Logo link home
+
+## Rules
+
+- Copy: no em/en dashes
+- Mobile-first; 320 → 1280+; no horizontal scroll
+- Reuse `Button` / brand icons when possible
+- Prefer Server Component unless motion needs client
+- Same pack works for **any** landing: swap assets/copy via brand + `error.ts`
+
+## Never
+
+- Generic unstyled Next error dump
+- Purple / cream-terracotta AI default looks
+- Hotlinked remote backgrounds when local assets exist
+- Claiming a landing “complete” without `not-found.tsx`

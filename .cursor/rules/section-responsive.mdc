@@ -1,0 +1,37 @@
+---
+description: Every landing section must be responsive on every screen size
+alwaysApply: true
+---
+
+# Section responsive (every section)
+
+**Every** new or edited section must work on **every** screen. No exceptions.
+
+## Breakpoints (verify each)
+
+| Label | Width |
+|-------|-------|
+| Phone SE | 320 |
+| Mobile | 390 |
+| Tablet | 768 |
+| Laptop | 1024 |
+| Desktop | 1280+ |
+
+## Must
+
+1. Mobile-first Tailwind: base → `sm:` → `md:` → `lg:` → `xl:`
+2. Shells: `min-w-0`, `max-w-full`, `overflow-x-clip`
+3. Grids collapse: 3-col → 1-col on phone; 2-col OK at `sm`/`md`
+4. CTAs: `w-full` on phone, `sm:w-auto` when designed
+5. Sticky side copy only from `lg:` up
+6. Decorative absolute text (vertical words) hide below `xl:` if they cause overflow
+
+## Never
+
+- Ship desktop-only then shrink later
+- Horizontal page scroll
+- Absolute UI that covers CTAs on small screens
+
+## Done check
+
+Before done: mentally (or browser) pass 320 / 390 / 768 / 1024 / 1280 for **that section**.

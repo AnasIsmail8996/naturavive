@@ -1,0 +1,49 @@
+---
+description: Header / navbar patterns for any landing — mobile chrome, menu, hover, active, sticky
+alwaysApply: true
+---
+
+# Header / navbar (must patterns)
+
+Apply on every landing. Prevents mobile overflow and dead CTAs.
+
+## Layout
+
+- `fixed inset-x-0 top-0 z-40`
+- Transparent at top; **active cream/`backdrop-blur` after `scrollY > ~64`**
+- When mobile menu open: force solid header bg (match menu panel)
+- Inner bar: `min-w-0 overflow-x-clip`; do **not** put `overflow-x-clip` on the whole header if it clips the dropdown
+
+## Mobile vs desktop
+
+| Viewport | Show |
+|----------|------|
+| `< md` | Logo (compact) + hamburger only |
+| `md+` | Optional search / account / cart |
+| `lg+` | Full text nav |
+| `xl+` | Header Shop CTA if designed |
+
+Hide via **wrapper** (`hidden md:flex`), not only `hidden` fighting `inline-flex` on the button.
+
+## Mobile menu
+
+- Prefer `createPortal(..., document.body)` + `fixed left-0 right-0`
+- Top = measured bar height (`ResizeObserver`); `maxHeight: calc(100dvh - headerH)`
+- `overflow-x-hidden overflow-y-auto`; `max-w-full`; no `100vw` (scrollbar gutter overflow)
+- Body lock: `overflow: hidden` + `paddingRight` = scrollbar gap
+- Escape closes; `aria-expanded` / `aria-controls`
+- Shop CTA inside menu panel on small screens
+
+## Nav links
+
+- `font-bold` (or heavier than body)
+- Hover: pill / button-like bg (ink + white text)
+- Active section: gold horizontal underline (`IntersectionObserver` on `#section` ids)
+- `scroll-mt-24` on target sections so sticky header does not hide eyebrows
+
+## Never
+
+- Desktop icons + Shop Now crowding 320/390 (hamburger clipped)
+- Absolute menu trapped under header `overflow-x-clip`
+- Swiper fade slides covering Hero CTAs (use `pointer-events-none` on swiper + `z-30` on CTA row)
+- Primary button stuck gold on touch: gate hover with `@media (hover: hover) and (pointer: fine)`

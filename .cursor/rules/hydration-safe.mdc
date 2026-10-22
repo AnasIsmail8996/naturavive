@@ -1,0 +1,28 @@
+---
+description: Avoid React hydration mismatches and Next Image console noise
+alwaysApply: true
+---
+
+# Hydration + Image console (must)
+
+## Hydration
+
+| Pattern | Do |
+|---------|-----|
+| `useReducedMotion()` | Treat `null` as unknown; do not branch SSR UI on it |
+| Typing / caret / random | Gate with `mounted` set in `useEffect` only |
+| Body attrs from extensions | `suppressHydrationWarning` on `<html>` + `<body>` |
+| Swiper fade + CTAs | Swiper `pointer-events-none`; CTA row `z-30` |
+| Portal menus | Render after `mounted` (Header pattern) |
+
+**Never** init state from `reduceMotion ? A : B` if that changes first client paint vs SSR.
+
+## next/image warnings
+
+1. List every `quality={N}` in the repo → add all to `images.qualities` in `next.config.ts`
+2. Logo resized by CSS height only → `style={{ width: "auto" }}` (+ `h-* w-auto` classes)
+3. Prefer webp from packs; set correct `sizes`
+
+## Favicon tab box
+
+Cream/black square behind mark in the browser tab = bad favicon. Rebuild with **transparent** canvas (`favicon-brand.mdc`). Hard-refresh / clear tab cache after replace.

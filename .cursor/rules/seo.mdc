@@ -1,0 +1,47 @@
+---
+description: MUST — SEO for every landing (metadata, JSON-LD, robots, sitemap)
+alwaysApply: true
+---
+
+# SEO optimization (must)
+
+Ship SEO with every public landing. Do not leave title-only metadata.
+
+## Required files
+
+| Piece | Path |
+|-------|------|
+| Helpers | `src/lib/seo.ts` (`buildMetadata`, JSON-LD builders) |
+| JSON-LD | `src/components/seo/JsonLd.tsx` |
+| Robots | `src/app/robots.ts` |
+| Sitemap | `src/app/sitemap.ts` |
+| Site config | `src/config/site.ts` (url, description, keywords) |
+
+## Metadata (layout or page)
+
+Use `buildMetadata()` for:
+
+- `metadataBase` from `site.url`
+- Title template + description + keywords
+- Canonical
+- Open Graph + Twitter (`summary_large_image`)
+- Robots index/follow + googleBot image preview
+- Icons (brand favicon)
+
+## Structured data
+
+Inject via `JsonLd` in root layout:
+
+- Organization
+- WebSite
+- Product (or Offer) when the landing sells products
+
+Copy: no em/en dashes. Keep `site.url` accurate per brand.
+
+## Checklist
+
+- [ ] `site.url` / description / keywords filled
+- [ ] OG image is a real local asset path
+- [ ] `/robots.txt` and `/sitemap.xml` resolve
+- [ ] JSON-LD present in HTML source
+- [ ] New public routes added to sitemap

@@ -1,0 +1,32 @@
+---
+description: Prevent recurring section alignment bugs (grids, gaps, equal card rows)
+alwaysApply: true
+---
+
+# Section alignment (must)
+
+Alignment issues keep recurring. Fix structure **before** polish.
+
+## Always
+
+1. Match reference **column count** (e.g. Copy | Icons | Visual = 3 cols, not stacked 2 cols)
+2. Prefer tight gaps: `gap-4` / `gap-5` / `gap-6` over `gap-10`+ unless design shows wide space
+3. Equal card rows: shared padding, `mt-auto` for CTA/price blocks, placeholder height for optional badges
+4. Full-bleed backgrounds span the **whole section**; soft mist overlays only (no hard cream wall that kills photo on one side)
+5. Trust/stats bars sit **close under** main content (`mt-6` / `mt-7`), not floating with huge empty gap
+
+## Card grids
+
+- `h-full` + `flex flex-col` on cards
+- Image `aspect-*` consistent across siblings
+- Icon rows: `grid grid-cols-3` (equal columns), not uneven flex
+
+## Never
+
+- Dump middle-column content under left column when design shows 3 columns
+- Huge `max-w` + large gap that leaves a dead empty middle
+- Misaligned prices/CTAs across product cards
+
+## Done check
+
+Compare to screenshot: columns, gaps, and card baselines match before claiming done.

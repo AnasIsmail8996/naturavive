@@ -1,0 +1,476 @@
+@import "tailwindcss";
+
+:root {
+  --nv-primary: #1b4332;
+  --nv-primary-mid: #2d5a3d;
+  --nv-primary-dark: #122a20;
+  --nv-leaf: #3d6b4f;
+  --nv-accent: #b88916;
+  --nv-ink: #1a1a1a;
+  --nv-muted: #5c5c5c;
+  --nv-paper: #ffffff;
+  --nv-paper-soft: #f7f5f0;
+  --background: var(--nv-paper);
+  --foreground: var(--nv-ink);
+}
+
+/* Pack SVGs ship gold strokes; recolor for light chrome / dark CTAs */
+.nv-icon-ink {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.88;
+}
+
+.nv-icon-on-dark {
+  filter: brightness(0) invert(1);
+}
+
+.nv-icon-leaf {
+  filter: invert(36%) sepia(18%) saturate(900%) hue-rotate(95deg) brightness(90%)
+    contrast(90%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans-body), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-fraunces), "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Dark stage for studio product PNGs that ship on pure black.
+   Kept after @theme — Turbopack was dropping this rule when placed before it. */
+@layer components {
+  .nv-product-stage {
+    background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #0a0a0a 70%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-width: 0;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: normal;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--nv-primary) 28%, transparent);
+  color: var(--nv-ink);
+}
+
+/* Themed page scrollbar (scroll-chrome.mdc) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--nv-primary) var(--nv-paper-soft);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--nv-paper-soft);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--nv-primary) 0%,
+    var(--nv-primary-dark) 100%
+  );
+  border-radius: 999px;
+  border: 2px solid var(--nv-paper-soft);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--nv-primary-dark);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--nv-paper-soft);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animation utilities (from Al Ahly / FORJD / 299 packs - brand via --nv-*)  */
+/* -------------------------------------------------------------------------- */
+
+/* Shared 360° icon spin on group hover */
+.nv-icon-spin {
+  display: inline-flex;
+  transform-origin: center center;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.group:hover .nv-icon-spin,
+.group\/icon:hover .nv-icon-spin,
+.group\/btn:hover .nv-icon-spin,
+.group\/card:hover .nv-icon-spin {
+  transform: rotate(360deg) scale(1.08);
+}
+
+/* Primary button hover motion */
+.nv-btn-animate {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.nv-btn-animate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--nv-ink) 18%, transparent);
+}
+
+.nv-btn-animate:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.nv-btn-animate .nv-btn-icon {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nv-btn-animate:hover .nv-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Desktop-only primary hover (avoids sticky hover on touch) */
+@media (hover: hover) and (pointer: fine) {
+  a.nv-btn-primary:hover,
+  button.nv-btn-primary:hover {
+    background-color: var(--nv-primary-mid) !important;
+  }
+
+  a.nv-btn-primary:hover .nv-btn-icon,
+  button.nv-btn-primary:hover .nv-btn-icon {
+    transform: translateX(4px);
+  }
+}
+
+/* Accent text gradient */
+.nv-text-gradient {
+  background-image: linear-gradient(
+    105deg,
+    var(--nv-primary) 0%,
+    color-mix(in srgb, var(--nv-accent) 70%, var(--nv-primary)) 45%,
+    var(--nv-primary-dark) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Typewriter caret */
+.nv-type-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.85em;
+  margin-left: 0.06em;
+  vertical-align: -0.05em;
+  background: var(--nv-primary);
+  animation: nv-caret-blink 0.85s steps(1) infinite;
+}
+
+@keyframes nv-caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Soft pulse (badges / decorative marks) */
+@keyframes nv-soft-pulse {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.nv-soft-pulse {
+  animation: nv-soft-pulse 4.5s ease-in-out infinite;
+}
+
+/* Border draw (SVG stroke) */
+@keyframes border-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-border-draw {
+  animation: border-draw 0.75s ease-out forwards;
+}
+
+/* Continuous orbit spin */
+@keyframes nv-orbit-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nv-orbit-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.nv-orbit-spin {
+  animation: nv-orbit-cw 28s linear infinite;
+  will-change: transform;
+}
+
+.nv-orbit-spin-slow {
+  animation: nv-orbit-cw 48s linear infinite;
+  will-change: transform;
+}
+
+.nv-orbit-spin-reverse {
+  animation: nv-orbit-ccw 36s linear infinite;
+  will-change: transform;
+}
+
+/* Layered scene: parent rotates, child counter-rotates (layered-scene.mdc) */
+.nv-orbit-track {
+  animation: nv-orbit-cw var(--nv-orbit-duration, 24s) linear infinite;
+  animation-delay: var(--nv-orbit-delay, 0s);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.nv-orbit-track--ccw {
+  animation-name: nv-orbit-ccw;
+}
+
+.nv-orbit-upright {
+  animation: nv-orbit-ccw var(--nv-orbit-duration, 24s) linear infinite;
+  animation-delay: var(--nv-orbit-delay, 0s);
+  transform-origin: center center;
+}
+
+.nv-orbit-track--ccw .nv-orbit-upright {
+  animation-name: nv-orbit-cw;
+}
+
+/* Float keyed icons */
+@keyframes nv-icon-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-7px) scale(1.06);
+  }
+  70% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+.nv-icon-float {
+  animation: nv-icon-float 3.4s ease-in-out infinite;
+}
+
+.nv-icon-float-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.nv-icon-float-delay-2 {
+  animation-delay: 0.7s;
+}
+
+.nv-icon-float-delay-3 {
+  animation-delay: 1.05s;
+}
+
+/* Marquee */
+@keyframes nv-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.nv-marquee-track {
+  animation: nv-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.nv-marquee:hover .nv-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Skeleton shimmer */
+@keyframes nv-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.nv-skeleton-shimmer {
+  background-image: linear-gradient(
+    105deg,
+    var(--nv-paper-soft) 0%,
+    var(--nv-paper-soft) 38%,
+    #fff 50%,
+    var(--nv-paper-soft) 62%,
+    var(--nv-paper-soft) 100%
+  );
+  background-size: 220% 100%;
+  animation: nv-shimmer 1.35s ease-in-out infinite;
+}
+
+/* Generic Swiper helpers */
+.nv-swiper .swiper-slide {
+  height: auto;
+  box-sizing: border-box;
+}
+
+.nv-swiper .swiper-slide > * {
+  height: 100%;
+}
+
+.nv-swiper-pagination {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  line-height: 0;
+}
+
+.nv-swiper-pagination .swiper-pagination-bullet {
+  width: 0.55rem;
+  height: 0.55rem;
+  margin: 0 0.22rem !important;
+  background: color-mix(in srgb, var(--nv-ink) 22%, transparent);
+  opacity: 1;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    width 0.2s ease;
+}
+
+.nv-swiper-pagination .swiper-pagination-bullet-active {
+  width: 1.5rem;
+  border-radius: 999px;
+  background: var(--nv-primary);
+}
+
+.nv-swiper-nav.swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Crossfade media swiper */
+.nv-media-swiper,
+.nv-media-swiper .swiper-wrapper,
+.nv-media-swiper .swiper-slide {
+  height: 100%;
+}
+
+.nv-media-swiper .swiper-slide {
+  opacity: 0 !important;
+}
+
+.nv-media-swiper .swiper-slide-active {
+  opacity: 1 !important;
+}
+
+/* Reduced motion (must) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nv-type-caret,
+  .nv-soft-pulse,
+  .nv-orbit-spin,
+  .nv-orbit-spin-slow,
+  .nv-orbit-spin-reverse,
+  .nv-orbit-track,
+  .nv-orbit-upright,
+  .nv-icon-float,
+  .nv-icon-float-delay-1,
+  .nv-icon-float-delay-2,
+  .nv-icon-float-delay-3,
+  .nv-marquee-track,
+  .nv-skeleton-shimmer,
+  .nv-icon-spin {
+    animation: none !important;
+  }
+
+  .nv-orbit-track {
+    will-change: auto;
+  }
+
+  .nv-type-caret {
+    opacity: 0;
+  }
+
+  .nv-soft-pulse {
+    opacity: 0.28;
+  }
+
+  .group:hover .nv-icon-spin,
+  .group\/icon:hover .nv-icon-spin,
+  .group\/btn:hover .nv-icon-spin,
+  .group\/card:hover .nv-icon-spin {
+    transform: scale(1.06) !important;
+  }
+
+  .nv-btn-animate:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .nv-btn-animate:hover .nv-btn-icon {
+    transform: none !important;
+  }
+
+  .nv-marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

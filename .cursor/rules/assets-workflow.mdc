@@ -1,0 +1,53 @@
+---
+description: Asset pack workflow before coding any landing section (SECTION-GUIDE, tones, paths)
+alwaysApply: true
+---
+
+# Assets workflow (must)
+
+Never invent images or icon names when a pack exists under `public/`.
+
+## Start of every section
+
+1. Open `public/<pack>/SECTION-GUIDE.md` (or equivalent) for **that** section row
+2. Copy exact paths into `@/config/brand` (or extend existing keys)
+3. Confirm files exist (webp **and** png if both listed)
+4. Prefer transparent cutouts over fighting baked rectangles
+
+## Icon tones
+
+| Surface | Default tone | Hover |
+| --- | --- | --- |
+| Dark photo / glass | `light` or `gold` | stronger gold / scale |
+| Cream / paper | `dark` | `gold` if `round-gold` / gold SVG exists |
+| Social in footer | `light` project SVGs | brand accent |
+
+- Circle size: keep list icons 52–58px consistent
+- Outer circle = CSS border; do not bake circles into SVG when pack expects CSS
+
+## Hero media choice
+
+SECTION-GUIDE style packs often give **either**:
+- composed branded hero photo, **or**
+- empty bg + transparent product
+
+Pick **one** approach. Do not stack both.
+
+## Individual cutout packs
+
+If the pack is split elements (`README.md` + `manifest.json` + `webp/`):
+
+- Map every used file into `@/config/brand`
+- Do not stack alternate composites listed as mutually exclusive
+- Motion/orbit: follow `layered-scene.mdc`
+
+## Script / handwritten slogans
+
+Use real HTML + script font (`font-script`). Do **not** bake slogan text into photos unless the asset is a physical plaque/photo with lettering.
+
+## Forbidden
+
+- Hotlinking Unsplash when local pack has the shot
+- Lucide for brand/social icons when pack has `social-*` / science SVGs
+- Hardcoded `/forjd-…` paths scattered in components (use `brand.ts`)
+- `@import` of files from `public/` into Next CSS pipeline

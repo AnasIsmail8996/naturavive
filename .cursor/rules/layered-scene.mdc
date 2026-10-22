@@ -1,0 +1,33 @@
+---
+description: Layered cutout scenes (milk/orbit/product) - assemble individuals, optimize motion
+alwaysApply: false
+globs: "**/Science.tsx,**/Hero.tsx,**/brand.ts,**/globals.css"
+---
+
+# Layered scene assets
+
+When the pack has **individual** cutouts (e.g. `forjd-milk-scene-elements`):
+
+## Assemble
+
+1. Read pack `README.md` / `manifest.json` first
+2. Map every path into `@/config/brand` (group under `milkScene` / `scene`)
+3. Prefer **webp**; `object-contain` on isolated objects
+4. Do **not** stack alternate composites (e.g. `03` together with `04`+`05`)
+5. Layer order: bg → rock/platform → center → orbit ring → satellites → glow
+
+## Motion (CSS first)
+
+- Slow 360°: `transform` + `linear` infinite (~18–28s); stagger via CSS vars
+- Orbit travel: parent rotates; child **counter-rotates** same duration so art stays upright
+- `will-change: transform` only on large spinning layers
+- Always disable under `prefers-reduced-motion`
+- No new animation libraries (`packages.mdc`)
+
+## Shells
+
+Rounded circles: `rounded-full` + soft border/glow; keep sizes responsive (`%` + `max-w`); `pointer-events-none` on decorative orbs
+
+## Mobile
+
+Cap orb size on 320/390; stage `overflow-hidden` / `overflow-x-clip`; no page scroll from satellites

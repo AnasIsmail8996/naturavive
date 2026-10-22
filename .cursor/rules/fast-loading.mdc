@@ -1,0 +1,59 @@
+---
+description: MUST — fast loading UI (LCP, fonts, images, code-split below-fold)
+alwaysApply: true
+---
+
+# Fast loading UI (must)
+
+Optimize perceived and real load on every landing. Target Lighthouse performance-friendly patterns.
+
+## LCP / above the fold
+
+1. Only **hero** critical media + navbar logo get `priority` / high fetch
+2. Do **not** set `priority` on product/testimonial cards below the fold
+3. Hero: one dominant image; prefer `.webp` from the asset pack
+4. Header logo: `priority` OK (small)
+
+## Images
+
+- `next/image` with correct `sizes`
+- `next.config`: `formats: ["image/avif", "image/webp"]`, sensible `deviceSizes`
+- **`images.qualities`**: include every `quality={N}` used (e.g. `[60, 65, 75]`) or console spam
+- Logo CSS height only → `style={{ width: "auto" }}`
+- Prefer pack webp; transparent PNG only when needed
+- Tiny favicons (`favicon-brand.mdc`) - never 1MB logo as icon
+
+## Fonts
+
+- `next/font` with `display: "swap"`
+- Load **minimal weights** (e.g. body 400/600/700/800; skip unused 500)
+- Script/display fonts: `preload: false` if not LCP text
+
+## JS / sections
+
+- Keep Hero + Header eagerly imported
+- **Dynamic import** below-fold sections (`Science` → `Footer`) via `next/dynamic`
+- `optimizePackageImports` for `lucide-react`, `motion`, `swiper` when used
+- `"use client"` only where needed
+
+## Config
+
+```ts
+// next.config.ts
+poweredByHeader: false
+compress: true
+images: {
+  formats: ["image/avif", "image/webp"],
+  qualities: [60, 65, 75],
+}
+```
+
+## Checklist
+
+- [ ] One LCP image strategy (hero)
+- [ ] Fonts swap + fewer weights
+- [ ] Below-fold dynamic imports
+- [ ] Image formats AVIF/WebP enabled
+- [ ] `images.qualities` matches usage
+- [ ] No giant favicon; transparent pad
+- [ ] `npm run build` green

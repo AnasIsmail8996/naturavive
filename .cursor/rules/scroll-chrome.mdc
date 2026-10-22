@@ -1,0 +1,61 @@
+---
+description: MUST — theme scrollbar, scroll-to-top, sticky navbar after hero, responsive chrome on every landing
+alwaysApply: true
+---
+
+# Scroll chrome & sticky nav (must)
+
+Every landing built with this pack must include theme-matched scroll UX. Do not leave browser-default chrome only.
+
+## 1. Stylish scrollbar (theme tokens)
+
+In `globals.css` (or equivalent):
+
+- Track: cream / paper (`--brand-cream`)
+- Thumb: gold gradient (`--brand-gold`)
+- `scrollbar-width: thin` + `scrollbar-color` for Firefox
+- WebKit `::-webkit-scrollbar*` for Chrome/Edge/Safari
+- Hover: slightly brighter gold thumb
+- `html { scroll-behavior: smooth }` with `prefers-reduced-motion: auto`
+
+Do **not** invent purple/neon scrollbar colors. Use brand CSS vars.
+
+## 2. Scroll-to-top control (bottom → top)
+
+- Fixed bottom-right (`ScrollToTop` in `components/ui/`)
+- Show after user leaves hero (~400px or past `#hero`)
+- Brand icon (pack arrow rotated `-90deg`, or theme up-arrow)
+- Ink/cream/gold circle: border gold, hover scale + gold ring
+- `cursor-pointer`, focus ring, `aria-label="Scroll to top"`
+- Respect reduced motion (`behavior: "auto"`)
+
+Wire once on the landing page (or root layout) so every route benefits.
+
+## 3. Navbar after short scroll (fixed + active bg)
+
+- Header is `fixed` (not only `absolute`)
+- At top of page: transparent / no fill
+- After a small scroll (`scrollY > ~64px`): **active bg**
+  - cream/ink panel at ~95% opacity
+  - `backdrop-blur`
+  - subtle bottom border + soft shadow
+- Transition bg/border/shadow ~300ms
+- Do **not** wait until the full hero leaves the viewport
+
+## 4. Responsive (every screen)
+
+Verify chrome at **320 · 390 · 768 · 1024 · 1280+**:
+
+- Header: compact padding on phone; no overflow; hamburger below `lg:`
+- Mobile: logo + hamburger only; menu via portal (`header-nav.mdc`)
+- Scroll-to-top: smaller hit target OK on 320; keep clear of safe edges (`right-4 bottom-5`)
+- Page shell: `min-w-0 max-w-full overflow-x-clip`
+- Mobile menu: scrollable if long (`max-h` + `overflow-y-auto`); no horizontal page scroll
+
+## Done check
+
+- [ ] Themed scrollbar visible
+- [ ] Scroll-to-top appears after hero, scrolls to top
+- [ ] Navbar gains solid/frosted bg after a short scroll (~64px), not only after hero ends
+- [ ] No horizontal scroll on phone
+- [ ] Documented in `AGENTS.md` for reuse on any landing

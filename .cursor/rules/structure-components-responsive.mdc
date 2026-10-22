@@ -1,0 +1,53 @@
+---
+description: Must — folder structure, component-based code, mobile-first responsive
+alwaysApply: true
+---
+
+# Must: structure · components · mobile
+
+Full tree + Home map: **`project-structure.mdc`**.
+
+## 1. Folder structure (must)
+
+Do not dump UI into `page.tsx`.
+
+| Put here | What |
+|----------|------|
+| `src/app/<route>/page.tsx` | Thin page: compose sections only |
+| `src/components/home/` or `components/<landing>/` | Page sections |
+| `src/components/layout/` | Header, Footer, shells |
+| `src/components/brand/` | Logos / marks |
+| `src/components/forms/` | react-hook-form components |
+| `src/components/ui/` | Reusable primitives |
+| `src/components/seo/` | JSON-LD / SEO widgets |
+| `src/data/` | Static copy (no secrets) |
+| `src/config/` | `site`, `brand` tokens/paths |
+| `src/lib/` | Helpers (SEO, utils) |
+| `public/` | Images, videos, asset packs |
+
+New landing: `src/app/<slug>/page.tsx` + `src/components/<slug>/` + `src/data/<slug>.ts`. Import via `@/`.
+
+## 2. Component-based code (must)
+
+- One section = one component file
+- Extract shared UI into `ui/*` before duplicating
+- `"use client"` only where needed (nav, motion, Swiper, forms, measured UI)
+- Copy → `src/data/*`; paths/colors → `src/config/*` + CSS vars
+- No god-files mixing unrelated sections
+- Named export per section (`export function Hero`)
+
+## 3. Mobile responsive (must)
+
+- Mobile-first; then `sm:` / `md:` / `lg:` / `xl:`
+- Verify **320 / 390 / 768 / 1024 / 1280+** before done
+- No horizontal scroll: `min-w-0`, `max-w-full`, `overflow-x-clip`
+- Touch-friendly CTAs; full-width buttons OK on phone
+- Never ship desktop-only then shrink. Details: `ui-responsive.mdc`
+
+## Never
+
+- Giant `page.tsx` with all section markup
+- Hardcoded brand strings outside config/data
+- Desktop-only layouts
+- Copy-paste sections instead of components
+- Parallel trees like `src/sections` or `src/views`

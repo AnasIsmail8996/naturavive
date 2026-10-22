@@ -1,0 +1,56 @@
+---
+description: MUST - approved packages and when to use each
+alwaysApply: true
+---
+
+# Packages (must)
+
+Use **existing** stack first. Do not add libraries without a clear gap.
+
+## Runtime (approved) - landing
+
+| Package | Use for |
+|---------|---------|
+| `next` (App Router) | Routes, images, metadata |
+| `react` / `react-dom` 19 | UI |
+| `tailwindcss` v4 | Styling (`globals.css`, utilities) |
+| `motion` | Section/card enter, stagger, hover lift |
+| `lucide-react` | UI icons |
+| `swiper` | Carousels / slides |
+| `gsap` + `@gsap/react` | Complex timelines only |
+| `react-hook-form` | Forms |
+| `@/components/ui/*` | ButtonLink, IconBadge, SocialIcons, ScrollToTop, etc. |
+
+## Optional later (admin / CMS - do not install until needed)
+
+| Package | Use for |
+|---------|---------|
+| `@tanstack/react-query` | Public/admin CMS content fetch |
+| `cloudinary` | Admin image/video uploads |
+| `mongoose` | Admin CMS Mongo models |
+| `jsonwebtoken` + `bcryptjs` | Admin JWT cookie auth |
+| `sonner` | Admin panel toasts |
+
+## Dev / QA
+
+| Package | Use for |
+|---------|---------|
+| `typescript` | Types |
+| `eslint` + `eslint-config-next` | Lint |
+| `@playwright/test` | E2E (optional; `e2e/` ready) |
+| `babel-plugin-react-compiler` | When `reactCompiler: true` in next.config |
+
+## Rules
+
+1. Prefer Motion over GSAP for simple UI motion
+2. Prefer Lucide over new icon packs
+3. Prefer Swiper over custom drag carousels
+4. Before `npm install <pkg>`: confirm no existing primitive covers it; ask user if adding a dependency
+5. Do not add UI kits (MUI, Chakra, shadcn dump) unless the user explicitly requests
+6. Keep versions aligned with `package.json`; do not downgrade Next/React casually
+
+## Never
+
+- Install unused packages
+- Duplicate Motion + GSAP on the same element
+- CDN scripts for libs already in `package.json`

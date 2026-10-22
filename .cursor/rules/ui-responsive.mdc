@@ -1,0 +1,32 @@
+---
+description: MUST — UI responsive on every screen (mobile-first)
+globs: src/components/**/*.{ts,tsx},src/app/**/*.{ts,tsx},src/app/globals.css,app/**/*.{ts,tsx},components/**/*.{ts,tsx}
+alwaysApply: true
+---
+
+# UI responsive (must)
+
+Mobile-first is required on every landing and section.
+
+## Breakpoints
+
+| Label | Width | Expectation |
+|-------|-------|-------------|
+| Phone SE | ~320px | No horizontal scroll; compact nav; CTAs full-width OK |
+| Mobile | ~390px | Primary mobile layout; hamburger |
+| Tablet | ~768px | 2-col cards where useful |
+| Laptop | ~1024px | Desktop nav (`lg:`) |
+| Desktop | ~1280px+ | Full grids |
+
+## Rules
+
+1. Mobile-first Tailwind; enhance with `sm:` / `md:` / `lg:` / `xl:`
+2. No overflow: `min-w-0`, `max-w-full`, `overflow-x-clip` on shells
+3. Long CTAs: `whitespace-normal`, `w-full sm:w-auto`
+4. Swiper: touch-friendly, no horizontal page scroll
+5. Comfortable touch targets
+6. Do not ship desktop-only then shrink
+
+## After UI changes
+
+Verify 320 / 390 / 768 / 1024 / 1280+; fix overflow before done.

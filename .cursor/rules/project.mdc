@@ -1,0 +1,62 @@
+---
+description: Naturavive - stack, structure, definition of done
+alwaysApply: true
+---
+
+# Naturavive
+
+**Domain:** update in `@/config/site` when live URL is ready
+
+## Brand & tokens
+
+- Contact → `@/config/site`
+- Logos, videos, colours → `@/config/brand`
+- Fill palette CSS vars in `src/app/globals.css` (`--nv-*`)
+- Locale: en
+
+## Stack
+
+Next.js App Router · React 19 · Tailwind v4 · Motion · Lucide · Swiper · GSAP available  
+Packages rule: `.cursor/rules/packages.mdc` · UI motion/icons: `.cursor/rules/ui-controls.mdc`
+
+## Structure
+
+- Thin `src/app/page.tsx` (compose only)
+- **Component-based:** sections in `src/components/home|layout|brand|ui|seo`
+- Copy: `src/data/` · tokens: `src/config/` · helpers: `src/lib/`
+- Read `src/STRUCTURE.md` + `.cursor/rules/structure-components-responsive.mdc` before large work
+
+## Must (every UI task)
+
+1. Correct **folder structure**
+2. **Component-based** code (no page dumps)
+3. **Mobile-first responsive** 320 → 1440+
+4. **Icons + hover + badges + motion** (`ui-controls.mdc`)
+5. Use **approved packages** only (`packages.mdc`)
+6. Per-landing UI may differ (`per-landing-ui.mdc`)
+7. Fast landings: follow `/think` (`fast-landing.mdc`)
+
+## Home order
+
+Header → Hero → (sections TBD from design) → Footer
+
+## Per landing page (must)
+
+- Other landings **may use completely different UI** (sections, layout, density, chrome).
+- Never force Home’s structure onto another page. Follow that page’s screenshot/Figma/brief.
+- Details: `.cursor/rules/per-landing-ui.mdc`
+
+## Definition of done (UI)
+
+1. Responsive 320 → 1440+; no horizontal scroll
+2. Local media under `public/` via `@/config/brand`
+3. Icons + hover + badges + `cursor-pointer`; Motion/Swiper/GSAP used as in `ui-controls` / `packages`
+4. Favicon + SEO metadata + JSON-LD present
+5. No em/en dashes in UI copy
+
+## Never
+
+- Hotlink live CDN media when local copies exist
+- Hardcode brand outside config/data
+- Em/en dashes in UI copy
+- Commit `.env*` or `.next/`
