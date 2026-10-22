@@ -6,7 +6,10 @@ export const brandAssets = {
   logoLight: `${ASSETS}/brand/naturavive-logo-horizontal-light.webp`,
   logoMark: `${ASSETS}/brand/naturavive-logo-mark.webp`,
   favicon: "/favicon.png",
-  ogImage: `${ASSETS}/reference/full-landing-page-clear.jpg`,
+  appleIcon: "/apple-icon.png",
+  /** 1200x630 social share preview (WhatsApp, iMessage, Slack, Discord, Facebook) */
+  ogImage: "/og-image.jpg",
+
 
   /**
    * Hero scene from clear-images pack (stone podium + botanical frame).

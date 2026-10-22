@@ -6,12 +6,13 @@ export const LIVE_DOMAIN = siteConfig.domain;
 
 const title = "NaturaVive | Daily Wellness, Powered by Nature";
 
+/** Short share-friendly description (WhatsApp / iMessage / Slack / Discord) */
 const description =
-  "Science-backed supplements to support your energy, immunity, gut health, and daily vitality - so you can feel your best, naturally.";
+  "Science-backed natural supplements for energy, immunity, gut health, and daily vitality. Feel your best, naturally.";
 
 const ogSiteName = siteConfig.ogSiteName;
 
-/** Absolute public OG image - must be HTTPS with no redirect */
+/** Absolute public OG image for link previews (1200x630) */
 export const OG_IMAGE_URL = `${LIVE_DOMAIN}/og-image.jpg` as const;
 
 const ogImage = {
@@ -19,7 +20,7 @@ const ogImage = {
   secureUrl: OG_IMAGE_URL,
   width: 1200,
   height: 630,
-  alt: "Naturavive",
+  alt: "NaturaVive - Daily Wellness, Powered by Nature",
   type: "image/jpeg",
 } as const;
 
@@ -34,9 +35,21 @@ export const seoConfig = {
     "gut health",
     "collagen",
     "greens immunity",
+    "energy support",
+    "science backed supplements",
     "naturavive.com",
   ],
 } as const;
+
+const iconMeta: Metadata["icons"] = {
+  icon: [
+    { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+    { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    { url: "/icon.png", type: "image/png", sizes: "512x512" },
+  ],
+  shortcut: [{ url: "/favicon.png", type: "image/png" }],
+  apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+};
 
 type PageMetaInput = {
   title: string;
@@ -75,6 +88,7 @@ export function buildPageMetadata({
     metadataBase: new URL(`${LIVE_DOMAIN}/`),
     title: resolveDocumentTitle(pageTitle, path, absoluteTitle),
     description: pageDescription,
+    applicationName: ogSiteName,
     alternates: {
       canonical: url,
       languages: {
@@ -96,6 +110,7 @@ export function buildPageMetadata({
       description: pageDescription,
       images: [OG_IMAGE_URL],
     },
+    icons: iconMeta,
     robots: noIndex
       ? { index: false, follow: true }
       : {
@@ -163,15 +178,10 @@ export const rootMetadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
-    ],
-    shortcut: "/favicon.png",
-    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
-  },
+  icons: iconMeta,
+  manifest: "/site.webmanifest",
   other: {
+    "theme-color": "#1B4332",
     ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
       ? {
           "google-site-verification":

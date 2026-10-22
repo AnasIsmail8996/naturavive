@@ -15,7 +15,10 @@ export function OrganizationJsonLd() {
         logo: {
           "@type": "ImageObject",
           url: `${LIVE_DOMAIN}${brandAssets.logoMark}`,
+          width: 512,
+          height: 512,
         },
+        image: `${LIVE_DOMAIN}${brandAssets.ogImage}`,
         description: seoConfig.description,
         email: siteConfig.email.display || undefined,
         sameAs: [
@@ -30,8 +33,10 @@ export function OrganizationJsonLd() {
         "@id": `${LIVE_DOMAIN}/#website`,
         url: `${LIVE_DOMAIN}/`,
         name: siteConfig.ogSiteName,
+        description: seoConfig.description,
         publisher: { "@id": `${LIVE_DOMAIN}/#org` },
         inLanguage: "en",
+        image: `${LIVE_DOMAIN}${brandAssets.ogImage}`,
       },
     ],
   };
