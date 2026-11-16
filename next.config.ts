@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   experimental: {
-    // Cursor-only feedback is not needed in GoDaddy production.
+    agentUpgrade: "security",
     optimizePackageImports: ["lucide-react", "motion", "swiper"],
   },
   // Keep Cache Components for App Router performance; production uses .next after build.
