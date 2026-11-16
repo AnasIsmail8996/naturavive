@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Naturavive
 
-**Domain:** update in `@/config/site` when live URL is ready
+**Domain:** `https://coastalvitality.us/` (canonical in `@/config/site`)
 
 ## Brand & tokens
 

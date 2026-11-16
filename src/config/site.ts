@@ -3,8 +3,8 @@ export const siteConfig = {
   shortName: "NaturaVive",
   /** Open Graph / social share site_name */
   ogSiteName: "NaturaVive",
-  /** Live production site - update when domain is ready */
-  domain: "https://naturavive.com",
+  /** Live production site */
+  domain: "https://coastalvitality.us",
   phone: {
     display: "",
     href: "tel:",
