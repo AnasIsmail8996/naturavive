@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 /** Live production domain (canonical source of truth) */
 export const LIVE_DOMAIN = siteConfig.domain;
 
-const title = "NaturaVive | Daily Wellness, Powered by Nature";
+const title = "Coastal Vitality | Daily Wellness, Powered by Nature";
 
 /** Short share-friendly description (WhatsApp / iMessage / Slack / Discord) */
 const description =
@@ -20,7 +20,7 @@ const ogImage = {
   secureUrl: OG_IMAGE_URL,
   width: 1200,
   height: 630,
-  alt: "NaturaVive - Daily Wellness, Powered by Nature",
+  alt: "Coastal Vitality - Daily Wellness, Powered by Nature",
   type: "image/jpeg",
 } as const;
 
@@ -29,7 +29,7 @@ export const seoConfig = {
   description,
   ogSiteName,
   keywords: [
-    "NaturaVive",
+    "Coastal Vitality",
     "natural supplements",
     "daily wellness",
     "gut health",
@@ -38,7 +38,6 @@ export const seoConfig = {
     "energy support",
     "science backed supplements",
     "coastalvitality.us",
-    "naturavive.com",
   ],
 } as const;
 

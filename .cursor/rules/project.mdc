@@ -3,14 +3,14 @@ description: Naturavive - stack, structure, definition of done
 alwaysApply: true
 ---
 
-# Naturavive
+# Coastal Vitality
 
 **Domain:** `https://coastalvitality.us/` (canonical in `@/config/site`)
 
 ## Brand & tokens
 
 - Contact → `@/config/site`
-- Logos, videos, colours → `@/config/brand`
+- Logos (navbar / mobile / footer) → `@/config/brand` + `coastal-vitality-logos/`
 - Fill palette CSS vars in `src/app/globals.css` (`--nv-*`)
 - Locale: en
 

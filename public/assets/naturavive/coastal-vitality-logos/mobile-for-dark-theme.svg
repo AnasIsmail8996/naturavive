@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="116"
+   height="100"
+   viewBox="0 0 116 100"
+   version="1.1"
+   id="svg3"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <g
+     fill="#A8D3AC"
+     fill-rule="evenodd"
+     id="g2">
+    <path
+       d="M47 79C49 43 67 16 102 13C103 44 85 69 52 75C59 55 72 39 88 29C71 35 54 53 47 79Z"
+       id="path1" />
+    <path
+       d="M46 77C23 74 12 57 13 35C36 35 51 47 51 63L45 74C35 60 27 53 21 49C27 60 35 69 46 77Z"
+       id="path2" />
+  </g>
+  <path
+     d="M42 88Q47 78 51 69"
+     fill="none"
+     stroke="#A8D3AC"
+     stroke-width="4"
+     stroke-linecap="round"
+     id="path3" />
+</svg>

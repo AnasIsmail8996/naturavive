@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "NaturaVive",
-  shortName: "NaturaVive",
+  name: "Coastal Vitality",
+  shortName: "Coastal Vitality",
   /** Open Graph / social share site_name */
-  ogSiteName: "NaturaVive",
+  ogSiteName: "Coastal Vitality",
   /** Live production site */
   domain: "https://coastalvitality.us",
   phone: {
@@ -10,17 +10,17 @@ export const siteConfig = {
     href: "tel:",
   },
   email: {
-    display: "hello@naturavive.com",
-    href: "mailto:hello@naturavive.com",
+    display: "hello@coastalvitality.us",
+    href: "mailto:hello@coastalvitality.us",
   },
   emails: {
-    info: "hello@naturavive.com",
+    info: "hello@coastalvitality.us",
   },
   contactEmails: [
     {
       label: "Hello",
-      display: "hello@naturavive.com",
-      href: "mailto:hello@naturavive.com",
+      display: "hello@coastalvitality.us",
+      href: "mailto:hello@coastalvitality.us",
     },
   ],
   address: {
@@ -28,7 +28,7 @@ export const siteConfig = {
     street: "",
     cityLine: "",
   },
-  tagline: "A Healthier, Happier You. Naturally.",
+  tagline: "Daily Wellness. Powered by Nature.",
   social: {
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",

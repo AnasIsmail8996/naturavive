@@ -15,8 +15,8 @@ export function OrganizationJsonLd() {
         logo: {
           "@type": "ImageObject",
           url: `${LIVE_DOMAIN}${brandAssets.logoMark}`,
-          width: 512,
-          height: 512,
+          width: 256,
+          height: 221,
         },
         image: `${LIVE_DOMAIN}${brandAssets.ogImage}`,
         description: seoConfig.description,

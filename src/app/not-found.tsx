@@ -6,7 +6,7 @@ import { NotFoundContent } from "@/components/not-found/NotFoundContent";
 export const metadata: Metadata = {
   title: "Page Not Found",
   description:
-    "This page could not be found. Return to Naturavive home to continue.",
+    "This page could not be found. Return to Coastal Vitality home to continue.",
   robots: { index: false, follow: true },
 };
 

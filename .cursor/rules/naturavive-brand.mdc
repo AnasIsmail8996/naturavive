@@ -5,10 +5,11 @@ alwaysApply: true
 
 # Brand & assets
 
-- Product: **NaturaVive**
-- Contact / domain: fill `@/config/site` (phone, email, social, live URL)
+- Product / brand: **Coastal Vitality** (domain `https://coastalvitality.us/`)
+- Contact / domain: `@/config/site`
 - Asset pack root: `public/assets/naturavive/`
-- Logos: `public/assets/naturavive/brand/`
+- Logos: `public/assets/naturavive/coastal-vitality-logos/` (navbar / mobile / footer · light & dark)
+- Legacy logos: `public/assets/naturavive/brand/`
 - Hero scenes: `hero/hero-scene-*.jpg` + `hero/hero-product-cluster-clear.png`
 - Products (clear): `products/*-clear.png` (black studio bg → use `.nv-knockout-black`)
 - Section frame bg: `backgrounds/section-frame-botanical.jpg`

@@ -64,7 +64,7 @@ export function Footer() {
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-10 sm:px-6 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8">
         <div className="flex min-w-0 flex-col items-center text-center lg:items-start lg:text-left">
-          <BrandLogo variant="light" />
+          <BrandLogo placement="footer" variant="light" />
           <p className="mt-2 max-w-xs text-sm text-white/75">
             {siteConfig.tagline}
           </p>

@@ -11,7 +11,7 @@ export const heroContent = {
   primaryCta: { label: "Shop Best Sellers", href: "/#products" },
   secondaryCta: { label: "Take the Wellness Quiz", href: "/#quiz" },
   productAlt:
-    "NaturaVive Daily Essentials, Collagen Glow, Gut Balance Probiotic, and Greens + Immunity on a stone ledge",
+    "Coastal Vitality Daily Essentials, Collagen Glow, Gut Balance Probiotic, and Greens + Immunity on a stone ledge",
   trustChips: [
     "Natural Ingredients",
     "Science Backed",
@@ -142,7 +142,7 @@ export const testimonialsContent = {
   titleLead: "What Our Customers",
   titleAccent: "Are Saying",
   subtitle:
-    "Thousands of people are choosing NaturaVive to feel healthier, more energized, and more like themselves - naturally.",
+    "Thousands of people are choosing Coastal Vitality to feel healthier, more energized, and more like themselves - naturally.",
   verifiedLabel: "Verified Buyer",
   items: [
     {
@@ -151,7 +151,7 @@ export const testimonialsContent = {
       name: "Emily R.",
       rating: 5,
       quote:
-        "NaturaVive has completely changed my daily routine. I have more energy, a happier gut, and I feel so much more like myself.",
+        "Coastal Vitality has completely changed my daily routine. I have more energy, a happier gut, and I feel so much more like myself.",
     },
     {
       id: "james",
@@ -159,7 +159,7 @@ export const testimonialsContent = {
       name: "James T.",
       rating: 5,
       quote:
-        "The quality is outstanding. I feel stronger, sleep better, and my digestion has improved so much. NaturaVive is now a staple in my wellness routine.",
+        "The quality is outstanding. I feel stronger, sleep better, and my digestion has improved so much. Coastal Vitality is now a staple in my wellness routine.",
     },
     {
       id: "sarah",

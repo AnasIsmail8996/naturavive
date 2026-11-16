@@ -1,10 +1,26 @@
 /** Brand paths under public/assets/naturavive */
 export const ASSETS = "/assets/naturavive" as const;
 
+const CV_LOGOS = `${ASSETS}/coastal-vitality-logos` as const;
+
 export const brandAssets = {
-  logoDark: `${ASSETS}/brand/naturavive-logo-horizontal-dark.webp`,
-  logoLight: `${ASSETS}/brand/naturavive-logo-horizontal-light.webp`,
-  logoMark: `${ASSETS}/brand/naturavive-logo-mark.webp`,
+  /**
+   * Coastal Vitality logos
+   * OnLight = dark mark for cream/white surfaces
+   * OnDark = light mark for green/ink surfaces
+   */
+  logos: {
+    navbarOnLight: `${CV_LOGOS}/navbar-for-light-theme.webp`,
+    navbarOnDark: `${CV_LOGOS}/navbar-for-dark-theme.webp`,
+    mobileOnLight: `${CV_LOGOS}/mobile-for-light-theme.webp`,
+    mobileOnDark: `${CV_LOGOS}/mobile-for-dark-theme.webp`,
+    footerOnLight: `${CV_LOGOS}/footer-for-light-theme.webp`,
+    footerOnDark: `${CV_LOGOS}/footer-for-dark-theme.webp`,
+  },
+  /** Legacy aliases */
+  logoDark: `${CV_LOGOS}/navbar-for-light-theme.webp`,
+  logoLight: `${CV_LOGOS}/navbar-for-dark-theme.webp`,
+  logoMark: `${CV_LOGOS}/mobile-for-light-theme.webp`,
   favicon: "/favicon.png",
   appleIcon: "/apple-icon.png",
   /** 1200x630 social share preview (WhatsApp, iMessage, Slack, Discord, Facebook) */
