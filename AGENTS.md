@@ -46,15 +46,28 @@ Keep structure; fix layout/copy/hover only. Mobile 320→1280+.
 
 ## Next time: git branches (must)
 
-All new changes build on **`dev`**. After verify → merge **`main`** → push **`main`** → sync **`dev`**.
+**Always work on `dev`.** Never day-to-day commit straight to `main`.
+
+Flow every ship:
 
 ```text
-1. git checkout dev          # create from main if needed
-2. commit work on dev
-3. npm run build             # verify
-4. git checkout main && git merge dev && git push origin main
-5. git checkout dev && git merge main && git push origin dev
+1. git checkout dev                 # create from main if missing
+2. do work + commit on dev
+3. npm run build                    # production build must be green
+4. git checkout main
+5. git pull origin main
+6. git merge dev
+7. git push origin main             # only after build OK
+8. git checkout dev
+9. git merge main && git push origin dev
 ```
+
+Rules:
+- Coding / UI / fixes → **`dev`**
+- Verified release → merge + push **`main`**
+- After every main push → sync **`dev`** (do not leave `dev` stale)
+- Do not push broken builds to `main`
+- Never force-push `main` unless user explicitly asks
 
 Full rule: `.cursor/rules/git-branch-workflow.mdc`
 

@@ -17,7 +17,7 @@ Lock columns/gaps first (`section-build-gate.mdc`); polish second.
 
 ## Deliver
 
-0. **Branch:** work on `dev` only; after verify merge + push `main`, then sync `dev` (`git-branch-workflow.mdc`)
+0. **Branch (must):** stay on `dev`. Before any main push: `npm run build` green → merge `dev` into `main` → `git push origin main` → sync `dev` (`git-branch-workflow.mdc` + `AGENTS.md`)
 1. Components in `src/components/*`; copy in `src/data/`; keep `page.tsx` thin
 2. Mobile-first; Motion stagger subtle; reuse primitives
 3. SEO in `@/lib/seo` when positioning/copy changes

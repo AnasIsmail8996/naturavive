@@ -1,5 +1,5 @@
 ---
-description: MUST — all work on dev; verify; merge+push main; sync dev
+description: MUST — all work on dev; production build; merge+push main; sync dev
 alwaysApply: true
 ---
 
@@ -8,16 +8,18 @@ alwaysApply: true
 **Default branch for all new work:** `dev`  
 **Production / push target after verify:** `main`
 
+Agent must follow this every time the user asks to ship, release, or “push main”.
+
 ## Next time (every change)
 
-1. **Build on `dev`**
+1. **Move to `dev`**
    - `git checkout dev` (create from `main` if missing: `git checkout -b dev`)
-   - Commit all feature / UI / fix work here
+   - Commit all feature / UI / fix / Stripe / SEO work here
    - Do **not** commit unfinished work straight to `main`
 
-2. **Verify on `dev`**
-   - `npm run build` green
-   - Spot-check critical UI (hero → footer) + mobile
+2. **Production build on `dev`**
+   - `npm run build` must exit 0
+   - Spot-check critical UI (hero → footer) + mobile when UI changed
    - Only then merge
 
 3. **Merge into `main` + push `main`**
@@ -33,6 +35,16 @@ alwaysApply: true
    - `git push origin dev` (so remote `dev` matches)
    - Confirm: `dev` and `main` point at the same commit (or `dev` is not behind `main`)
 
+## Copy-paste sequence
+
+```text
+git checkout dev
+# ... commits ...
+npm run build
+git checkout main && git pull origin main && git merge dev && git push origin main
+git checkout dev && git merge main && git push origin dev
+```
+
 ## Rules
 
 - Day-to-day coding + commits → **`dev`**
@@ -40,6 +52,7 @@ alwaysApply: true
 - After every successful main push → bring **`dev`** current again
 - Do not leave `dev` stale behind `main`
 - Do not open PRs / pushes to `main` with unverified broken builds
+- Never commit `.env` / secrets
 
 ## Quick checklist
 
