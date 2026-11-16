@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { BuyButton } from "@/components/ui/BuyButton";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { StarRating } from "@/components/ui/StarRating";
 import { brandAssets } from "@/config/brand";
@@ -142,18 +143,12 @@ export function BestSellers() {
                       {product.price}
                     </p>
 
-                    <button
-                      type="button"
-                      className="nv-btn-animate nv-btn-primary mt-3 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--nv-primary)] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--nv-primary-mid)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--nv-accent)] sm:mt-4 sm:py-3"
-                    >
-                      <BrandIcon
-                        src={brandAssets.icons.cart}
-                        size={18}
-                        className="nv-icon-on-dark nv-btn-icon"
-                        alt=""
+                    <div className="mt-3 sm:mt-4">
+                      <BuyButton
+                        productId={product.id}
+                        label={bestSellersContent.ctaLabel}
                       />
-                      {bestSellersContent.ctaLabel}
-                    </button>
+                    </div>
                   </div>
                 </article>
               </motion.li>

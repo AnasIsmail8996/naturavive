@@ -65,7 +65,7 @@ export const bestSellersContent = {
   subtitle:
     "Premium, science-backed formulas made with the finest natural ingredients to help you look, feel and live better every day.",
   shopAll: { label: "Shop All Products", href: "/#products" },
-  ctaLabel: "Add to Cart",
+  ctaLabel: "Buy Now",
   products: [
     {
       id: "daily-essentials",
