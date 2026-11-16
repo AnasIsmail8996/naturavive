@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Coastal Vitality
 
-**Domain:** `https://coastalvitality.us/` (canonical in `@/config/site`)
+**Domain:** `https://coastalvitalitys.com/` (GoDaddy Next.js app; WordPress stays on coastalvitality.us)
 
 ## Brand & tokens
 

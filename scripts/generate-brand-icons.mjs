@@ -49,7 +49,7 @@ async function makeOg() {
   <text x="72" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#FFFFFF">Daily Wellness,</text>
   <text x="72" y="408" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#E8C96A">Powered by Nature.</text>
   <text x="72" y="470" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#F7F5F0">Science-backed supplements for energy, immunity and vitality.</text>
-  <text x="72" y="560" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#B88916" letter-spacing="2">COASTALVITALITY.US</text>
+  <text x="72" y="560" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#B88916" letter-spacing="2">COASTALVITALITYS.COM</text>
 </svg>`);
 
   const logo = await sharp(logoForOg)

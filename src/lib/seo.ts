@@ -37,7 +37,7 @@ export const seoConfig = {
     "greens immunity",
     "energy support",
     "science backed supplements",
-    "coastalvitality.us",
+    "coastalvitalitys.com",
   ],
 } as const;
 

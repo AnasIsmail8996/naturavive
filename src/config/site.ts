@@ -3,24 +3,27 @@ export const siteConfig = {
   shortName: "Coastal Vitality",
   /** Open Graph / social share site_name */
   ogSiteName: "Coastal Vitality",
-  /** Live production site */
-  domain: "https://coastalvitality.us",
+  /**
+   * GoDaddy Node.js app domain (this Next.js site).
+   * Keep WordPress on coastalvitality.us separate - do not point that host here.
+   */
+  domain: "https://coastalvitalitys.com",
   phone: {
     display: "",
     href: "tel:",
   },
   email: {
-    display: "hello@coastalvitality.us",
-    href: "mailto:hello@coastalvitality.us",
+    display: "hello@coastalvitalitys.com",
+    href: "mailto:hello@coastalvitalitys.com",
   },
   emails: {
-    info: "hello@coastalvitality.us",
+    info: "hello@coastalvitalitys.com",
   },
   contactEmails: [
     {
       label: "Hello",
-      display: "hello@coastalvitality.us",
-      href: "mailto:hello@coastalvitality.us",
+      display: "hello@coastalvitalitys.com",
+      href: "mailto:hello@coastalvitalitys.com",
     },
   ],
   address: {

@@ -12,11 +12,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   experimental: {
-    agentFeedback: true,
+    // Cursor-only feedback is not needed in GoDaddy production.
     optimizePackageImports: ["lucide-react", "motion", "swiper"],
   },
+  // Keep Cache Components for App Router performance; production uses .next after build.
   cacheComponents: true,
   partialPrefetching: true,
+  // Turbopack rules stay for local `next dev` only. Production build uses webpack (`npm run build`).
   turbopack: {
     rules: {
       "*.css": {
